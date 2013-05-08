@@ -1,14 +1,11 @@
 require 'spec_helper'
-
-# Specs in this file have access to a helper object that includes
-# the UsersHelper. For example:
-#
-# describe UsersHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe UsersHelper do
+  describe "runkeeper_auth_endpoint" do
+    it "fetches valid URL with params for endpoint" do
+      params = "client_id=#{RunKeeper::CLIENT_ID}"
+      params += "&" + "response_type=code"
+      params += "&" + "redirect_uri=#{CGI.escape(RunKeeper::REDIRECT_URI)}"
+      helper.runkeeper_auth_endpoint.should eq(RunKeeper::AUTHORIZATION_URL + "?" + params)
+    end
+  end
 end

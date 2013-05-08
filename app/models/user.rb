@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
 
   has_many :entries
   # Include default devise modules. Others available are:
-  # :token_authenticatable, 
-  # :lockable, :timeoutable 
+  # :token_authenticatable,
+  # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
@@ -12,10 +12,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name,
-                  :running_in_pune, :runner_goal, :runner_level
+                  :running_in_pune, :runner_goal, :runner_level, :runkeeper_token
   # attr_accessible :title, :body
 
-  def display_name 
+  def display_name
     if twitter_id
       "#{twitter_display_name} (@#{twitter_screen_name})"
     elsif github_id
