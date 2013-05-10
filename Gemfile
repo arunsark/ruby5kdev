@@ -13,7 +13,7 @@ gem 'bullet', group: :development
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
-
+gem 'sidekiq'
 gem 'figaro'
 
 group :development, :test do

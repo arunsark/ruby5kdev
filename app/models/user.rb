@@ -46,4 +46,7 @@ class User < ActiveRecord::Base
     user if user && user.last_name == name_parts[1]
   end
 
+  def self.runkeepers
+    User.where("runkeeper_token is not null")
+  end
 end

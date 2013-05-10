@@ -1,11 +1,20 @@
 require 'spec_helper'
 
 describe User do
-  describe "name= method" do
-    before :each do
-      @user = FactoryGirl.create(:user)
-    end
+  before :each do
+    @user = FactoryGirl.create(:user)
+  end
 
+  describe "runkeeper users" do
+    before do
+      FactoryGirl.create(:user, runkeeper_token: "foobar")
+    end
+    it "fetches all users who are linked to runkeeper" do
+      User.runkeepers.count.should == 1
+    end
+  end
+
+  describe "name= method" do
     it "should split the name into first_name and last_name" do
       @user.name = "Ashis Roy"
       @user.first_name.should eq( "Ashis" )
